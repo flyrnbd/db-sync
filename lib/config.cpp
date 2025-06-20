@@ -1,6 +1,9 @@
-#include "config.h"
+#include <fstream>
 #include <iostream>
 #include "input_schema.h"
+#include "config.h"
+#include "json.hpp"
+
 using namespace std;
 
 std::vector<std::pair<int, std::string>> database_list = {
@@ -30,6 +33,27 @@ bool setConfig(Config &config)
     std::cout << BOLD << CYAN << "╚══════════════════════════════════════════════════════════════╝" << RESET << std::endl;
     std::cout << "\n"
               << YELLOW << "💡 Configuration details displayed above!" << RESET << std::endl;
+
+    try
+    {
+        // Store config in json file
+        nlohmann::json jsonConfig;
+        jsonConfig["database"] = config.database;
+        jsonConfig["db_host"] = config.db_host;
+        jsonConfig["port"] = config.port;
+        jsonConfig["database_name"] = config.database_name;
+        jsonConfig["username"] = config.username;
+        jsonConfig["password"] = config.password;
+
+        std::ofstream file("./config.json");
+        file << jsonConfig.dump(4);
+        file.close();
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+        return false;
+    }
 
     return true;
 }
