@@ -46,6 +46,12 @@ int main(int argc, char *args[])
   // std::cout << BLUE << WHITE << "White text on blue background." << RESET << std::endl;
   // std::cout << "Back to default." << std::endl;
 
+  // std::cout << ON_RED << "Red background text." << RESET << std::endl;
+  // std::cout << ON_GREEN << "Green background text." << RESET << std::endl;
+  // std::cout << BOLD << GREEN << "This is bold green text." << RESET << std::endl;
+  // std::cout << UNDERLINE << YELLOW << "Underlined yellow text." << RESET << std::endl;
+  // std::cout << "Back to default." << std::endl;
+
   vector<string> finalArray = mergeArray(parameter, config_parameter);
 
   int inputCount = 1;
