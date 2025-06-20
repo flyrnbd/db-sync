@@ -18,13 +18,13 @@
 const int baseParamLength = 4;
 const int configParamLength = 6;
 
-std::string parameter[baseParamLength] = {
+std::vector<std::string> parameter = {
     "config",
     "storage",
     "source",
     "output"};
 
-std::string config_parameter[configParamLength] = {
+std::vector<std::string> config_parameter = {
     "database",
     "db_host",
     "port",

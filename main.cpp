@@ -1,46 +1,62 @@
-#include<iostream>
-#include<filesystem>
-#include<vector>
-#include"lib/input_schema.h"
+#include <iostream>
+#include <filesystem>
+#include <vector>
+#include "lib/input_schema.h"
 using namespace std;
 
+vector<string> mergeArray(
+    vector<string> inputArray1,
+    vector<string> inputArray2)
+{
+  vector<string> finalArray;
 
-std::vector<std::string> mergeArray(){
-  std::vector<std::string> names;
-  names.push_back("Sajjad Ahmed");
-  return names;
+  for (int i = 0; i < inputArray1.size(); i++)
+  {
+    finalArray.push_back(inputArray1[i]);
+  }
+
+  for (int i = 0; i < inputArray2.size(); i++)
+  {
+    finalArray.push_back(inputArray2[i]);
+  }
+
+  return finalArray;
 }
 
-int main(int argc,char* args[]){
-    //std::cout << RED << "This is red text." << RESET << std::endl;
-    //std::cout << BOLD << GREEN << "This is bold green text." << RESET << std::endl;
-    //std::cout << UNDERLINE << YELLOW << "Underlined yellow text." << RESET << std::endl;
-    //std::cout << BLUE << WHITE << "White text on blue background." << RESET << std::endl;
+int main(int argc, char *args[])
+{
+  // std::cout << RED << "This is red text." << RESET << std::endl;
+  // std::cout << BOLD << GREEN << "This is bold green text." << RESET << std::endl;
+  // std::cout << UNDERLINE << YELLOW << "Underlined yellow text." << RESET << std::endl;
+  // std::cout << BLUE << WHITE << "White text on blue background." << RESET << std::endl;
+
+  vector<string> finalArray = mergeArray(parameter, config_parameter);
 
   int inputCount = 1;
-  while(inputCount < argc-1){
+  while (inputCount < argc - 1)
+  {
     bool isFailed = false;
 
-    for(int parameterCount = 0;parameterCount < baseParamLength;parameterCount++){
-      if(parameter[parameterCount] != args[inputCount]){
-        std::cout << RED << "Invalid param :" << args[inputCount]<< RESET << endl;
+    for (int parameterCount = 0; parameterCount < baseParamLength; parameterCount++)
+    {
+      if (parameter[parameterCount] != args[inputCount])
+      {
+        std::cout << RED << "Invalid param :" << args[inputCount] << RESET << endl;
         isFailed = true;
         break;
       }
     }
 
-    // break program if any mis input value entered
-    if(isFailed){
+    if (isFailed)
+    {
       break;
     }
     inputCount++;
   }
 
-
   std::string argument = args[0];
   int inputLenght = argc;
-  //cout << args[1] << endl;
-  //cout << "Count : " << inputLenght << endl;
+  // cout << args[1] << endl;
+  // cout << "Count : " << inputLenght << endl;
   return 0;
-
 }
