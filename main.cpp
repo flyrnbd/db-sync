@@ -14,9 +14,15 @@
 #define WHITE       "\033[37m"
 #define ON_RED      "\033[41m"
 #define ON_GREEN    "\033[42m"
-
-
 using namespace std;
+
+
+std::vector<std::string> mergeArray(){
+  std::vector<std::string> names;
+  names.push_back("Sajjad Ahmed");
+  return names;
+}
+
 int main(int argc,char* args[]){
     //std::cout << RED << "This is red text." << RESET << std::endl;
     //std::cout << BOLD << GREEN << "This is bold green text." << RESET << std::endl;
@@ -55,14 +61,12 @@ int main(int argc,char* args[]){
         isFailed = true;
         break;
       }
-      cout << "parameterCount: "<< parameterCount << endl;
     }
 
+    // break program if any mis input value entered
     if(isFailed){
       break;
     }
-
-    cout << "Input Count : " << inputCount << endl;
     inputCount++;
   }
 
