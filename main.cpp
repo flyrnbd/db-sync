@@ -10,7 +10,8 @@ vector<string> parameter = {
     "config",
     "storage",
     "source",
-    "output"};
+    "output",
+    "verify_config"};
 
 vector<string> config_parameter = {
     "database",
@@ -154,9 +155,18 @@ int main(int argc, char *args[])
 
     return 0;
   }
-  else if (firstInput == "storage")
+  else if (firstInput == "verify_config")
   {
-    // Handle storage case
+    bool isConfigValid = verifyConfig();
+    if (isConfigValid)
+    {
+      success("Config is valid");
+    }
+    else
+    {
+      error("Config is invalid");
+      return 1;
+    }
   }
   else if (firstInput == "source")
   {

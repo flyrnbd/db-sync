@@ -67,3 +67,76 @@ bool isConfigValid(Config &config)
 {
     return true;
 }
+
+bool verifyConfig()
+{
+    std::ifstream file("./config.json");
+    nlohmann::json jsonConfig = nlohmann::json::parse(file);
+
+    if (jsonConfig.empty())
+    {
+        return false;
+    }
+
+    if (jsonConfig.find("database") == jsonConfig.end())
+    {
+        return false;
+    }
+
+    if (jsonConfig.find("db_host") == jsonConfig.end())
+    {
+        return false;
+    }
+
+    if (jsonConfig.find("port") == jsonConfig.end())
+    {
+        return false;
+    }
+
+    if (jsonConfig.find("database_name") == jsonConfig.end())
+    {
+        return false;
+    }
+
+    if (jsonConfig.find("username") == jsonConfig.end())
+    {
+        return false;
+    }
+
+    if (jsonConfig.find("password") == jsonConfig.end())
+    {
+        return false;
+    }
+
+    if (jsonConfig["database"] == "none")
+    {
+        return false;
+    }
+
+    // check empty string
+    if (
+        jsonConfig["database"] == "" ||
+        jsonConfig["db_host"] == "" ||
+        jsonConfig["port"] == "" ||
+        jsonConfig["database_name"] == "" ||
+        jsonConfig["username"] == "")
+    {
+        return false;
+    }
+
+    // std::cout << jsonConfig.dump(4) << std::endl;
+    std::cout << "\n"
+              << BOLD << GREEN << "╔══════════════════════════════════════════════════════════════╗" << RESET << std::endl;
+    std::cout << BOLD << GREEN << "║                    " << YELLOW << "DATABASE CONFIGURATION" << GREEN << "                    ║" << RESET << std::endl;
+    std::cout << BOLD << GREEN << "╠══════════════════════════════════════════════════════════════╣" << RESET << std::endl;
+    std::cout << BOLD << GREEN << "║ " << RESET << "Database Type: " << CYAN << std::setw(40) << std::left << jsonConfig["database"] << GREEN << " ║" << RESET << std::endl;
+    std::cout << BOLD << GREEN << "║ " << RESET << "Host Address:  " << CYAN << std::setw(40) << std::left << jsonConfig["db_host"] << GREEN << " ║" << RESET << std::endl;
+    std::cout << BOLD << GREEN << "║ " << RESET << "Port Number:   " << CYAN << std::setw(40) << std::left << jsonConfig["port"] << GREEN << " ║" << RESET << std::endl;
+    std::cout << BOLD << GREEN << "║ " << RESET << "Database Name: " << CYAN << std::setw(40) << std::left << jsonConfig["database_name"] << GREEN << " ║" << RESET << std::endl;
+    std::cout << BOLD << GREEN << "║ " << RESET << "Username:      " << CYAN << std::setw(40) << std::left << jsonConfig["username"] << GREEN << " ║" << RESET << std::endl;
+    std::cout << BOLD << GREEN << "║ " << RESET << "Password:      " << CYAN << std::setw(40) << std::left << jsonConfig["password"] << GREEN << " ║" << RESET << std::endl;
+    std::cout << BOLD << GREEN << "╚══════════════════════════════════════════════════════════════╝" << RESET << std::endl;
+    std::cout << "\n";
+
+    return true;
+}

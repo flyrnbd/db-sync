@@ -17,6 +17,7 @@ struct Config
 bool setConfig(Config &config);
 bool getConfig(Config &config);
 bool isConfigValid(Config &config);
+bool verifyConfig();
 
 extern std::vector<std::pair<int, std::string>> database_list;
 
