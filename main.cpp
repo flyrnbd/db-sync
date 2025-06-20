@@ -2,6 +2,7 @@
 #include <filesystem>
 #include <vector>
 #include "lib/input_schema.h"
+#include "lib/config.h"
 using namespace std;
 
 vector<string> mergeArray(
@@ -53,6 +54,22 @@ int main(int argc, char *args[])
     }
     inputCount++;
   }
+
+  Config config;
+  config.database = "database";
+  config.db_host = "db_host";
+  config.port = "port";
+  config.database_name = "database_name";
+  config.username = "username";
+  config.password = "password";
+
+  bool isConfigSet = setConfig(config);
+  bool isConfigGet = getConfig(config);
+  bool isConfigValidValue = isConfigValid(config);
+
+  cout << "isConfigSet: " << isConfigSet << endl;
+  cout << "isConfigGet: " << isConfigGet << endl;
+  cout << "isConfigValidValue: " << isConfigValidValue << endl;
 
   return 0;
 }
