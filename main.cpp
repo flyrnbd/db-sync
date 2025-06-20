@@ -54,9 +54,5 @@ int main(int argc, char *args[])
     inputCount++;
   }
 
-  std::string argument = args[0];
-  int inputLenght = argc;
-  // cout << args[1] << endl;
-  // cout << "Count : " << inputLenght << endl;
   return 0;
 }
