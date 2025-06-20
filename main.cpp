@@ -5,6 +5,20 @@
 #include "lib/config.h"
 using namespace std;
 
+vector<string> parameter = {
+    "config",
+    "storage",
+    "source",
+    "output"};
+
+vector<string> config_parameter = {
+    "database",
+    "db_host",
+    "port",
+    "database_name",
+    "username",
+    "password"};
+
 vector<string> mergeArray(
     vector<string> inputArray1,
     vector<string> inputArray2)
@@ -30,6 +44,7 @@ int main(int argc, char *args[])
   // std::cout << BOLD << GREEN << "This is bold green text." << RESET << std::endl;
   // std::cout << UNDERLINE << YELLOW << "Underlined yellow text." << RESET << std::endl;
   // std::cout << BLUE << WHITE << "White text on blue background." << RESET << std::endl;
+  // std::cout << "Back to default." << std::endl;
 
   vector<string> finalArray = mergeArray(parameter, config_parameter);
 

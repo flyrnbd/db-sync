@@ -18,18 +18,8 @@
 const int baseParamLength = 4;
 const int configParamLength = 6;
 
-std::vector<std::string> parameter = {
-    "config",
-    "storage",
-    "source",
-    "output"};
+// extern std::vector<std::string> parameter;
 
-std::vector<std::string> config_parameter = {
-    "database",
-    "db_host",
-    "port",
-    "database_name",
-    "username",
-    "password"};
+// extern std::vector<std::string> config_parameter;
 
 #endif // INPUT_SCHEMA
