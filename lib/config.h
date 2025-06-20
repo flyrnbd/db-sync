@@ -18,4 +18,6 @@ bool setConfig(Config &config);
 bool getConfig(Config &config);
 bool isConfigValid(Config &config);
 
+extern std::vector<std::pair<int, std::string>> database_list;
+
 #endif // CONFIG_H

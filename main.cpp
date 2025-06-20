@@ -77,30 +77,95 @@ int main(int argc, char *args[])
     inputCount++;
   }
 
-  Config config;
-  config.database = "database";
-  config.db_host = "db_host";
-  config.port = "port";
-  config.database_name = "database_name";
-  config.username = "username";
-  config.password = "password";
+  string firstInput = args[1];
 
-  bool isConfigSet = setConfig(config);
-  bool isConfigGet = getConfig(config);
-  bool isConfigValidValue = isConfigValid(config);
+  if (firstInput == "config")
+  {
+    std::cout << "\n"
+              << BOLD << CYAN << "╔══════════════════════════════════════════════════════════════╗" << RESET << std::endl;
+    std::cout << BOLD << CYAN << "║                    POPULAR SQL DATABASES                    ║" << RESET << std::endl;
+    std::cout << BOLD << CYAN << "╠══════════════════════════════════════════════════════════════╣" << RESET << std::endl;
+    std::cout << BOLD << CYAN << "║" << RESET << "  " << GREEN << "1." << RESET << " " << BOLD << "MySQL" << RESET << " - Open source, widely used for web applications" << "  " << BOLD << CYAN << "║" << RESET << std::endl;
+    std::cout << BOLD << CYAN << "║" << RESET << "  " << GREEN << "2." << RESET << " " << BOLD << "PostgreSQL" << RESET << " - Advanced open source database" << "        " << BOLD << CYAN << "║" << RESET << std::endl;
+    std::cout << BOLD << CYAN << "║" << RESET << "  " << GREEN << "3." << RESET << " " << BOLD << "Oracle" << RESET << " - Enterprise-grade database management" << "      " << BOLD << CYAN << "║" << RESET << std::endl;
+    std::cout << BOLD << CYAN << "║" << RESET << "  " << GREEN << "4." << RESET << " " << BOLD << "Microsoft SQL Server" << RESET << " - Microsoft's database solution" << "  " << BOLD << CYAN << "║" << RESET << std::endl;
+    std::cout << BOLD << CYAN << "║" << RESET << "  " << GREEN << "5." << RESET << " " << BOLD << "SQLite" << RESET << " - Lightweight, serverless database" << "          " << BOLD << CYAN << "║" << RESET << std::endl;
+    std::cout << BOLD << CYAN << "║" << RESET << "  " << GREEN << "6." << RESET << " " << BOLD << "MariaDB" << RESET << " - MySQL fork with enhanced features" << "        " << BOLD << CYAN << "║" << RESET << std::endl;
+    std::cout << BOLD << CYAN << "║" << RESET << "  " << GREEN << "7." << RESET << " " << BOLD << "MongoDB" << RESET << " - NoSQL document database" << "                " << BOLD << CYAN << "║" << RESET << std::endl;
+    std::cout << BOLD << CYAN << "║" << RESET << "  " << GREEN << "8." << RESET << " " << BOLD << "Redis" << RESET << " - In-memory data structure store" << "            " << BOLD << CYAN << "║" << RESET << std::endl;
+    std::cout << BOLD << CYAN << "╚══════════════════════════════════════════════════════════════╝" << RESET << std::endl;
+    std::cout << "\n"
+              << YELLOW << "💡 Tip: Choose the database that best fits your project requirements!" << RESET << std::endl;
 
-  cout << "isConfigSet: " << isConfigSet << endl;
-  cout << "isConfigGet: " << isConfigGet << endl;
-  cout << "isConfigValidValue: " << isConfigValidValue << endl;
+    success("Enter the number of the database you want to use or enter 0 for none: ");
+    string databaseInput;
+    cin >> databaseInput;
 
-  success("Success");
-  error("Error");
-  warning("Warning");
-  info("Info");
-  debug("Debug");
-  fatal("Fatal");
-  trace("Trace");
-  loadingSign();
+    int databaseInputInt = stoi(databaseInput);
+    string dbName = database_list[databaseInputInt].second;
+    if (dbName == "none")
+    {
+      warning("You did not enter any database");
+      return 1;
+    }
+    else if (dbName.length() == 0)
+    {
+      error("Invalid database");
+      return 1;
+    }
+
+    string dbHost;
+    success("Enter the host of the database: ");
+    cin >> dbHost;
+
+    string port;
+    success("Enter the port of the database: ");
+    cin >> port;
+
+    string dbDatabaseName;
+    success("Enter the name of the database: ");
+    cin >> dbDatabaseName;
+
+    string username;
+    success("Enter the username of the database: ");
+    cin >> username;
+
+    string password;
+    success("Enter the password of the database: ");
+    cin >> password;
+
+    Config config;
+    config.database = dbName;
+    config.db_host = dbHost;
+    config.port = port;
+    config.database_name = dbDatabaseName;
+    config.username = username;
+    config.password = password;
+
+    bool isConfigSet = setConfig(config);
+    if (isConfigSet)
+    {
+      success("Config set successfully");
+    }
+    else
+    {
+      error("Config set failed");
+    }
+
+    return 0;
+  }
+  else if (firstInput == "storage")
+  {
+    // Handle storage case
+  }
+  else if (firstInput == "source")
+  {
+    // Handle source case
+  }
+  else if (firstInput == "output")
+  {
+    // Handle output case
+  }
 
   return 0;
 }
