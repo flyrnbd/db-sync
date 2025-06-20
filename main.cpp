@@ -37,9 +37,9 @@ int main(int argc, char *args[])
   {
     bool isFailed = false;
 
-    for (int parameterCount = 0; parameterCount < baseParamLength; parameterCount++)
+    for (int finalArrayCount = 0; finalArrayCount < finalArray.size(); finalArrayCount++)
     {
-      if (parameter[parameterCount] != args[inputCount])
+      if (finalArray[finalArrayCount] != args[inputCount])
       {
         std::cout << RED << "Invalid param :" << args[inputCount] << RESET << endl;
         isFailed = true;
