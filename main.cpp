@@ -41,7 +41,7 @@ int main(int argc, char *args[])
     {
       if (finalArray[finalArrayCount] != args[inputCount])
       {
-        std::cout << RED << "Invalid param :" << args[inputCount] << RESET << endl;
+        std::cout << RED << "Invalid param : " << args[inputCount] << RESET << endl;
         isFailed = true;
         break;
       }
