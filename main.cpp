@@ -3,6 +3,7 @@
 #include <vector>
 #include "lib/input_schema.h"
 #include "lib/config.h"
+#include "lib/util.h"
 using namespace std;
 
 vector<string> parameter = {
@@ -91,6 +92,15 @@ int main(int argc, char *args[])
   cout << "isConfigSet: " << isConfigSet << endl;
   cout << "isConfigGet: " << isConfigGet << endl;
   cout << "isConfigValidValue: " << isConfigValidValue << endl;
+
+  success("Success");
+  error("Error");
+  warning("Warning");
+  info("Info");
+  debug("Debug");
+  fatal("Fatal");
+  trace("Trace");
+  loadingSign();
 
   return 0;
 }
